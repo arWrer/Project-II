@@ -1,0 +1,180 @@
+<%- include ('../index/header') %>
+
+
+<div class="" uk-grid="masonry: true;">
+    <div class="uk-width-1-1">
+        <div class="uk-grid-small  uk-align-left"  id="ddchart"></div>
+        <div class="uk-grid-small  uk-align-left"  id="mmchart"></div>
+        <div class="uk-grid-small  uk-align-left"  id="methodchart"></div>
+    </div>
+    
+    <div class="uk-width-4-3@m">
+        <div class="uk-card uk-card-default uk-card-body">
+            <h3>최근 거래</h3>
+            <table class="uk-table uk-table-divider uk-text-small uk-table-responsive">
+                <thead>
+                    <tr>
+                        <th>지점</th>
+                        <th class="uk-table-expand">결제 일시</th>
+                        <th>결제 방법</th>
+                        <th class="uk-table-shrink">결제 금액</th>
+                    </tr>
+                </thead>
+                
+                <tbody id="table-data">
+                    <%
+                        for (var i=(page*page_num)-page_num;i<(page*page_num);i++){
+                            if(i>leng){
+                                i++;
+                            }else{
+                    %>            
+
+                        <tr>
+                            <td><%=last[i].name%></td>
+                            <td><%=last[i].time%></td>
+                            <td><%=last[i].method%></td>
+                            <td><%=last[i].totalAmount%></td>
+                        </tr>
+                    <%
+                            }
+                        }
+                    %>
+                    </tbody>
+                </table>
+                <ul class="uk-pagination uk-flex-center">
+                    <%
+                        for(var j =0;j<last.length/5;j++){
+                    %>
+                        <li>
+                            <a class="uk-link-heading" href=<%= j+1 %>><%= j+1 %></a>
+                        </li>   
+                    <%     
+                        }
+                    %>
+                </ul>
+                
+                
+            </table>
+        </div>
+    </div>
+</div>
+<!--일 그래프-->
+<script type="text/javascript">
+    console.log("일 그래프")
+    google.charts.load('current', {'packages': ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawddChart);
+    function drawddChart(){
+
+        var dds = JSON.parse('<%- JSON.stringify(dd)%>');
+        
+
+        var dddata = new google.visualization.DataTable();
+        dddata.addColumn('string','');
+        dddata.addColumn('number','매출');
+        
+        
+        console.log(dds)
+        for(i =0;i<dds.length;i++){
+            dddata.addRow([dds[i].name,dds[i].sum]);
+        }
+        var options = {
+            
+            title: '매장별 일 매출',
+            width:600,
+            height:250,
+            bar : {
+                groupWidth : '20%' // 그래프 너비 설정 %
+            },
+            
+            vAxis: {
+            title:'매출',
+            },
+            hAxis : {
+            title: '매장',
+            },
+        };
+
+        var ddchart = new google.visualization.ColumnChart(document.getElementById('ddchart'));
+
+        ddchart.draw(dddata,options);
+    }
+</script>
+<!--월그래프-->
+<script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawmmChart);
+    function drawmmChart(){
+
+        var mms = JSON.parse('<%- JSON.stringify(mm)%>');
+        
+
+        var mmdata = new google.visualization.DataTable();
+        mmdata.addColumn('string','매장');
+        mmdata.addColumn('number','매출');
+        
+        
+        console.log(mms)
+        for(i =0;i<mms.length;i++){
+            mmdata.addRow([mms[i].name,mms[i].sum]);
+        }
+        var options = {
+            
+            title: '매장별 월 매출',
+            subtitle: '',
+            width:600,
+            height:250,
+            bar : {
+                groupWidth : '20%' // 그래프 너비 설정 %
+            },
+            
+            
+            
+            vAxis: {
+            title:'매출',
+            },
+            hAxis : {
+            title: '매장'
+            },
+        };
+
+        var mmchart = new google.visualization.ColumnChart(document.getElementById('mmchart'));
+
+        mmchart.draw(mmdata,options);
+    }
+</script>
+<!--결제방법 그래프-->
+<script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawmethodChart);
+    function drawmethodChart(){
+
+        var method = JSON.parse('<%- JSON.stringify(order)%>');
+        
+
+        var methoddata = new google.visualization.DataTable();
+        methoddata.addColumn('string','상품');
+        methoddata.addColumn('number','사용수');
+        
+        
+        console.log(method)
+        for(i =0;i<method.length;i++){
+            methoddata.addRow([method[i].order_name,method[i].cnt]);
+        }
+        var options = {
+            title: '상품 선호도',
+            width:280,
+            height:250,
+            fontSize: 12
+        };
+
+        var methodchart = new google.visualization.PieChart(document.getElementById('methodchart'));
+
+        methodchart.draw(methoddata,options);
+    }
+</script>
+
+
+
+    <%- include ('../index/footer') %>
+    
+    <!-- home아님 그냥 참고용 샘플 파일임-->

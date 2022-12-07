@@ -1,0 +1,66 @@
+<%- include ('../index/header') %>
+
+<div class="uk-grid-small uk-animation-slide-bottom-small" uk-grid="masonry: true;">
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body" >
+            <h2>금월 데이터 그래프</h2>
+            <button class="uk-button uk-button-primary uk-align-right">월</button>
+            <form action="/api/buser/order/homegraphww" method="GET">
+                <button class="uk-button uk-button-primary uk-align-right">주</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+    <div class="uk-grid-small uk-animation-slide-bottom-small" uk-grid="masonry: true;" id="chart_div"></div>
+    <script type="text/javascript">
+        
+        google.charts.load('current', {'packages': ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart(){
+            var dbdata = JSON.parse('<%- JSON.stringify(getmm)%>');
+            var data = new google.visualization.DataTable();
+            data.addColumn('string','');
+            data.addColumn('number','매출');
+            data.addColumn('number','방문횟수');
+            
+            for(i =0;i<dbdata.length;i++){
+                data.addRow([dbdata[i].m,dbdata[i].sum,dbdata[i].count*1000]);
+            }
+
+            var options = {
+                chart: {
+                title: '매출',
+                subtitle: '',
+                },
+                height:500,
+                
+                vAxis: {
+                title:'데이터',
+                format: '',
+                
+                },
+                hAxis : {
+                title: '기간',
+                
+                height:'50%'
+                },
+                series:{
+                    0: { colors: ['#0080FF'] },
+                    1: { colors: ['#FF0000']  },
+                }
+                
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+            chart.draw(data,options);
+        }
+    </script>
+    
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/addressAPI.js"></script>
+
+<%- include ('../index/footer') %>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .menus {
+        position: absolute;
+        top: 10%;
+        left: 20%;
+        width: 60%;
+        height: 50%;
+        box-shadow: 0 0 15px black;
+        display: flex;
+    }
+    
+    .menus .item {
+        padding: 2em;
+    }
+    
+    .menus .item img {
+        width: 10em;
+    }
+</style>
+
+<body>
+    <h1>
+        <%= store.name %>
+    </h1>
+    <h2>
+        <%= user.username %>
+    </h2>
+
+
+    <div class="menus">
+        <ul>
+            <% for (var item of menu) { %>
+                <li class="item">
+                    <%= item.label %>
+                        <%= item.price %>
+                            <img src="<%= item.image %>" alt="">
+                </li>
+
+
+                <button><a href="/api/kiosk/order?menu_id=<%= item.id %>">결제</a></button>
+                <% } %>
+
+        </ul>
+    </div>
+
+    <form action="/auth/kiosk/user/signout" method="POST">
+        <button>로그아웃</button>
+    </form>
+</body>
+
+
+</html>

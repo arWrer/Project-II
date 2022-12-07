@@ -1,0 +1,36 @@
+<ul class="uk-nav uk-nav-default">
+    <li class="uk-parent">
+        <ul class="uk-nav-sub">
+            <li class="uk-nav-header">메인</li>
+            <li><a href="/buser/home/1">메인 페이지</a></li>
+            <li><a href="/api/buser/order/homegraphww">그래프</a></li>
+            <!-- <li><a href="/stat">통계 보기</a></li> -->
+        </ul>
+    </li>
+    <li class="uk-nav-divider"></li>
+    <li class="uk-parent">
+        <ul class="uk-nav-sub">
+            <li class="uk-nav-header">사용자 정보</li>
+            <li><a href="/auth/user/1">유저 정보</a></li>
+            <li><a href="/auth/buser/1">매장관리자 정보</a></li>
+            <li><a href="/store/info"></a></li>
+        </ul>
+    </li>    
+    <li class="uk-nav-divider"></li>
+    <li class="uk-parent">
+        <ul class="uk-nav-sub">
+            <li class="uk-nav-header">매장 관리</li>
+            <li><a href="/api/buser/store">매장 정보</a></li>
+        </ul>
+    </li>
+    <li class="uk-nav-divider"></li>
+    
+    <ul class="uk-nav-sub">
+        <li class="uk-nav-header">지원</li>
+        <li>
+            <form action="/auth/signout" method="POST">
+                <a href="/auth/buser/signout" type="submit" onclick="console.log('send테스트')">로그아웃</a>
+            </form>
+        </li>
+    </ul>
+</ul>

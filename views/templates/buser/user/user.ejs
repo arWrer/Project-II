@@ -1,0 +1,55 @@
+<%- include ('../index/header') %>
+
+<div class="uk-grid-small uk-animation-slide-bottom-small" uk-grid="masonry: true;">
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body" >
+            <h2>유저 정보</h2>
+        </div>
+    </div>
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body">
+            <table class="uk-table uk-table-hover uk-table-divider uk-table-responsive">
+                <thead>
+                    <tr>
+                        <th>아이디</th>
+                        <th>사용자 이름</th>
+                        <th>생성시간</th>
+                        <th>마지막 방문</th>
+                    </tr>
+                </thead>
+                <tbody id="table-data">
+                <%
+                    for (var i=(page*page_num)-page_num;i<(page*page_num);i++){
+                        if(i>leng){
+                            i++;
+                        }else{
+                %>            
+
+                        <tr>
+                            <td><%=user[i].user_id%></td>
+                            <td><%=user[i].username%></td>
+                            <td><%=user[i].createtime%></td>
+                            <td><%=user[i].max%></td>
+                        </tr>
+                <%
+                        }
+                    }
+                %>
+                </tbody>
+            </table>
+            <ul class="uk-pagination uk-flex-center">
+                <%
+                    for(var j =0;j<user.length/10;j++){
+                %>
+                    <li>
+                        <a class="uk-link-heading" href=<%= j+1 %>><%= j+1 %></a>
+                    </li>   
+                <%     
+                    }
+                %>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<%- include ('../index/footer') %>

@@ -1,0 +1,197 @@
+<%- include ('../index/header') %>
+
+<!-- 매장선택 -->
+<!-- 상품명
+상품가격
+상품 사진 업로드
+상품 설명 -->
+
+<div class="uk-grid-small uk-animation-slide-bottom-small" uk-grid="masonry: true;">
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body" >
+            <h2>상품 조회</h2>
+            <button class="uk-button uk-button-primary">상품 추가</button>
+        </div>
+    </div>
+    
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body">
+            <h2>판매중인 상품 조회</h2>
+            <table class="uk-table uk-table-divider uk-table-responsive">
+                <thead>
+                    <tr>
+                        <th>상품명</th>
+                        <th>상품 가격</th>
+                        <th>상품 설명</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>4컷 사진</td>
+                        <td>3,000원</td>
+                        <td>8장 촬영 후 4장 선택하여 출력</td>
+                        <td><span uk-icon="cog"></span></td>
+                    </tr>
+                    <tr>
+                        <td>6컷 사진</td>
+                        <td>5,000원</td>
+                        <td>12장 촬영 후 6장 선택하여 출력하는 사진</td>
+                        <td><span uk-icon="cog"></span></td>
+                    </tr>
+                    <tr>
+                        <td>일반 사진</td>
+                        <td>4,000원</td>
+                        <td>일반 사진과 동일한 상품</td>
+                        <td><a href="#modal-example" uk-toggle><span uk-icon="cog"></span></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- This is an anchor toggling the modal -->
+
+
+<!-- This is the modal -->
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <form>
+            <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
+                <div>
+                    <div class="uk-margin uk-width-medium@s">
+                        <h5>매장 선택</h5>
+                        <select class="uk-select">
+                            <option>매장 선택</option>
+                            <option>충북대 축제 매장(테스트)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-margin uk-width-medium@s">
+                        <h5>상품명</h5>
+                        <input class="uk-input" type="text" placeholder="명칭" value="일반 사진">
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-margin uk-width-medium@s">
+                        <h5>상품 가격</h5>
+                        <input class="uk-input" type="text" placeholder="가격" value="4000">
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-margin uk-width-medium@s">
+                        <h5>상품 사진 업로드</h5>
+                        <div class="uk-width-medium@s" uk-form-custom="target: true">
+                            <input type="file">
+                            <input class="uk-input" type="text" placeholder="이미지 선택" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-xlarge@s">
+                    <div class="uk-margin">
+                        <h5>상품 설명</h5>
+                        <textarea class="uk-textarea" type="text" rows="3" placeholder="사용자에게 보여줄 상품에 대한 설명을 간단하게 적어주세요">일반 사진과 동일한 상품</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-flex uk-flex-between uk-margin-small">
+                <span>
+                    <button class="uk-button uk-button-danger">삭제</button>
+                </span>
+                <span>
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">취소</button>
+                    <button class="uk-button uk-button-primary" type="submit">저장</button>
+                </span>
+
+            </div>
+
+        </form>
+        
+    </div>
+</div>
+    
+
+    <!-- <div id="booth-card" class="uk-width-1-4@m">
+        <ul class="uk-grid-small uk-child-width-1-1" uk-grid>
+            <li>
+                <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                    <div class="uk-flex uk-flex-between">
+                        <div>1번 부스</div>
+                        <div class="booth-info">
+                            <span class="uk-label uk-label-success">동작</span>
+                            <span uk-icon="cog"></span>
+                            <span uk-icon="trash"></span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                    <div class="uk-flex uk-flex-between">
+                        <div>2번 부스</div>
+                        <div class="booth-info">
+                            <span class="uk-label uk-label-warning">중지</span>
+                            <span uk-icon="cog"></span>
+                            <span uk-icon="trash"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                    <div class="uk-flex uk-flex-between">
+                        <div>3번 부스</div>
+                        <div class="booth-info">
+                            <span class="uk-label uk-label-warning">중지</span>
+                            <span uk-icon="cog"></span>
+                            <span uk-icon="trash"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                    <div class="uk-flex uk-flex-between">
+                        <div>4번 부스</div>
+                        <div class="booth-info">
+                            <span class="uk-label uk-label-warning">중지</span>
+                            <span uk-icon="cog"></span>
+                            <span uk-icon="trash"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                    <div class="uk-flex uk-flex-between">
+                        <div>5번 부스</div>
+                        <div class="booth-info">
+                            <span class="uk-label uk-label-warning">중지</span>
+                            <span uk-icon="cog"></span>
+                            <span uk-icon="trash"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                    <div class="uk-flex uk-flex-between">
+                        <div>6번 부스</div>
+                        <div class="booth-info">
+                            <span class="uk-label uk-label-warning">중지</span>
+                            <span uk-icon="cog"></span>
+                            <span uk-icon="trash"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div> -->
+    <div>
+
+    </div>
+</div>
+    <%- include ('../index/footer') %>

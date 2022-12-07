@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit-icons.min.js"></script>
+    <script type="module" src="js/index.js"></script>
+</head>
+
+<body>
+    <main class="container" uk-height-viewport="expend: true">
+        <!--헤더시작-->
+        <header uk-sticky>
+            <nav class="uk-navbar uk-background-primary uk-height-10px">
+                <div class="uk-navbar-center">
+                    <a href="#" class="uk-button-primary uk-padding-small uk-light" uk-icon="heart">메인</a>
+                </div>
+                <div class="uk-navbar-right uk-hidden@s">
+                    <a href="#" class="uk-button-primary uk-padding-small uk-light" type="button" uk-toggle="target: #offcanvas-nav" uk-icon="menu"></a>
+                </div>
+            </nav>
+        </header>
+        <div id="content" class="uk-child-width-expand uk-margin-remove" uk-grid>
+            <!--네비게이션-->
+            <aside class="uk-width-small uk-visible@s uk-padding-small uk-height-1-1">
+                <%- include ('../index/nav') %>
+            </aside>
+            <!--콘텐츠부분-->
+            <section class="uk-padding-large uk-padding-small@s" uk-height-viewport="offset-bottom: 52px">
+                <div id="app">
+
+                </div>
+                <a href="/" id="11" data-link>Dashboard</a>
+                <a href="/posts" id="22" data-link>Posts</a>
+                <a href="/settings" id="33" data-link>Settings</a>
+            </section>
+            <!--풋터-->
+        </div>
+        <div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true">
+            <div class="uk-offcanvas-bar uk-background-primary uk-padding-small">
+                <%- include ('../index/nav') %>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

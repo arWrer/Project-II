@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://js.tosspayments.com/v1"></script>
+</head>
+
+<body>
+    <h2>home</h2>
+    <h3>안녕하세요
+        <%= user.username %>님</h3>
+    <button id="registerCardBtn">카드 등록</button>
+    <button onclick="location.href='/api/user/uin'">Uin코드 생성하기</button>
+</body>
+
+<script>
+    var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+    var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+
+    const registerCardBtn = document.querySelector('#registerCardBtn');
+    registerCardBtn.addEventListener("click", () => {
+        tossPayments.requestBillingAuth('카드', { // 결제 수단 파라미터
+            // 빌링키 발급 요청을 위한 파라미터
+            customerKey: "<%= user.id %>",
+            successUrl: 'http://172.30.1.59/user/payments/toss/billing_auth/success',
+            failUrl: 'http://172.30.1.59/user/payments/toss/billing_auth/fail',
+        })
+    })
+</script>
+
+</html>

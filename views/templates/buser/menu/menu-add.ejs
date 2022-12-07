@@ -1,0 +1,54 @@
+<%- include ('../index/header') %>
+<div id="content" class="uk-margin-large uk-width-xlarge@s">
+    <div>
+        <div>
+            <h2>상품 신규 등록</h2>
+        </div>
+        <div class="uk-margin-large uk-width-xlarge@s form-div">
+            <form>
+                <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
+                    <div>
+                        <div class="uk-margin uk-width-medium@s">
+                            <h5>매장 선택</h5>
+                            <select class="uk-select">
+                                <option>매장 선택</option>
+                                <option>충북대 축제 매장(테스트)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-margin uk-width-medium@s">
+                            <h5>상품명</h5>
+                            <input class="uk-input" type="text" placeholder="명칭">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-margin uk-width-medium@s">
+                            <h5>상품 가격</h5>
+                            <input class="uk-input" type="text" placeholder="가격">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-margin uk-width-medium@s">
+                            <h5>상품 사진 업로드</h5>
+                            <div class="uk-width-medium@s" uk-form-custom="target: true">
+                                <input type="file">
+                                <input class="uk-input" type="text" placeholder="이미지 선택" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-xlarge@s">
+                        <div class="uk-margin">
+                            <h5>상품 설명</h5>
+                            <textarea class="uk-textarea" type="text" rows="3" placeholder="사용자에게 보여줄 상품에 대한 설명을 간단하게 적어주세요"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary" type="submit">등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include ('../index/footer') %>

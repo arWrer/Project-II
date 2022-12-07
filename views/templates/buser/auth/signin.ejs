@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/web.css">
+    <!-- <link rel="stylesheet" media="(max-width: 640px)" href="mobile.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit-icons.min.js"></script>
+    <script type="module" src="/js/index.js" data-link></script>
+    <style>
+        #window {
+            border-radius: 20px;
+            padding: 40px;
+        }
+        
+        @media all and (max-width: 640px) {
+            #bg {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg" class="uk-background-primary" uk-height-viewport="expand: true">
+        <div id="window" class="uk-position-center uk-background-default">
+            <div class="uk-width-medium">
+                <div class="uk-margin">
+                    <h3>MUFI 관리자 페이지</h3>
+                </div>
+                <form action="?" method="POST">
+                    <div class="uk-margin">
+                        <input class="uk-input uk-width-expand" type="text" name="email" placeholder="이메일/전화번호">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input uk-width-expand" type="password" name="password" placeholder="비밀번호">
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary uk-height-1-1 uk-width-expand" type="submit">로그인</button>
+                    </div>
+                    <div class="uk-margin-small">
+                        <div>
+                            <button type="button" class="uk-button uk-button-text" onclick="location.href = '/auth/buser/signup'">가맹 정보 연동하기</button>
+                        </div>
+                        <div>
+                            <button type="button" class="uk-button uk-button-text">계정 정보 찾기</button>
+                        </div>
+                    </div>
+
+                    <!-- <div class="sns-signin">
+                        <button class="uk-button uk-button-primary">sign in with google</button>
+                        <button class="uk-button uk-button-primary">sign in with kakao</button>
+                    </div> -->
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

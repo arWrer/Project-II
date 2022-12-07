@@ -1,0 +1,72 @@
+export {storeAdd}
+
+export function hi(){
+    console.log("hi myname is ungyuun");
+}
+<%- include ('../index/header') %>
+<div id="content" class="uk-margin-large uk-width-xlarge@s">
+    <div>
+        <div>
+            <h2>매장 신규 등록</h2>
+        </div>
+        <div class="uk-margin-large uk-width-xlarge@s form-div">
+            <form action="api/buser/store" method="POST">
+                <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
+                    <!-- <h5>가맹점 주소 입력</h5>
+                        
+                        <h5>가맹점 추가 정보 입력</h5>
+                        <div uk-margin>
+                            <input class="uk-input uk-width-expand" type="text" name="name" placeholder="상호명">
+
+                            <input class="uk-input uk-width-expand" type="text" name="text" placeholder="추가 설명(선택)">
+                        </div> -->
+                    <div>
+                        <div class="uk-margin uk-width-medium@s">
+                            <h5>매장 이름</h5>
+                            <input class="uk-input" type="text" name = "name" placeholder="명칭">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="uk-margin uk-width-medium@s">
+                            <h5>매장  코드</h5>
+                            <input class="uk-input" type="text" name="code" placeholder="발급받은 매장 코드를 입력해주세요">
+                        </div>
+                    </div>
+                    <div class="uk-width-xlarge@s">
+                        <div class="uk-margin">
+                            <h5>매장 설명</h5>
+                            <textarea class="uk-textarea" type="text" rows="3" name = "description" placeholder="매장의 위치, 특징에 대한 간단한 설명을 입력해주세요"></textarea>
+                        </div>
+                    </div>
+                    <div class="uk-width-xlarge@s">
+                        <div uk-margin class="uk-margin uk-width-xlarge@s">
+                            <h5>매장 주소</h5>
+                            <input class="uk-input uk-width-1-2" type="text" id="postcode" name = "zip_code" placeholder="우편번호" readonly>
+                            <input class="uk-button uk-button-primary uk-width-auto" type="button" onclick="execDaumPostcode()" value="우편번호 검색"><br>
+                            <div id="wrap" style="display:none;border:1px solid;width:100%;height:300px;margin:5px 0;position:relative">
+                                <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+                            </div>
+                            <input class="uk-input uk-width-expand" type="text" id="address" placeholder="주소" readonly><br>
+                            <input class="uk-input uk-width-expand" type="text" id="detailAddress" name = "detail_address" placeholder="상세주소">
+                            <input class="uk-input uk-width-expand" type="text" id="extraAddress" placeholder="참고항목">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary" type="submit">록</button>
+                </div>
+            </form>
+            <form action="api/buser/store" method="POST">
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary" type="submit">등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/js/addressAPI.js"></script>
+</div>
+<%- include ('../index/footer') %>
+
+    <!-- home아님 그냥 참고용 샘플 파일임-->

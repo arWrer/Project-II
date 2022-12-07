@@ -1,0 +1,31 @@
+summary {
+    font-size:large;
+    font-weight: 600;
+}
+
+article {
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid black;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+header > nav {
+    min-height: 52px;
+}
+
+body {
+    overflow: scroll;
+}
+
+section {
+    background-color: aliceblue;
+}
+
+#content {
+    margin: 0 auto;
+    /* background-color: aqua; */
+}

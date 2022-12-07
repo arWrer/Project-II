@@ -1,0 +1,155 @@
+
+
+<%- include ('../index/header') %>
+
+
+
+<div>
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body" >
+            <h2>매장 통합 관리</h2>
+            <div>
+                <button class="uk-button uk-button-default"><a href="#req_modal" uk-toggle>메세지</a></button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div class="uk-width-1-1" uk-grid">
+            <% for (var i =0; i< store.length;i++) { %>
+                <div class="uk-card uk-card-default uk-card-body uk-align-left" >
+                    <p><a href='/api/buser/store/select/<%=store[i].name%>/1'><font size="5" color="black"><%= store[i].name %></font></a></p>
+                    
+                    <font color="black"><span uk-icon="list"></font></span>
+                    <font color="black"><span uk-icon="pencil"></font></span>
+                    <font color="black"><span uk-icon="trash"></font></span>
+                    <br></br>
+                    <form action="/api/buser/order/<%= store[i].name %>" method="POST"> 
+                        <button class="uk-button uk-button-primary" type="submit">그래프 조회</button>
+                    </form>
+                </div>
+            <% } %>
+            <div class="uk-card uk-card-default uk-card-body uk-align-left" >
+                <br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#modal-example" uk-toggle><span uk-icon="plus"></span></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br></br>
+                <br></br>
+            </div>
+        </div>
+    </div>
+<!-- This is the modal -->
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <div id="content" class="uk-margin-large uk-width-xlarge@s">
+            <div>
+                <div>
+                    <h2>매장 신규 등록</h2>
+                </div>
+                <div class="uk-margin-large uk-width-xlarge@s form-div">
+                    <form action="/api/buser/store" method="POST">
+                        <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
+                            <!-- <h5>가맹점 주소 입력</h5>
+                                
+                                <h5>가맹점 추가 정보 입력</h5>
+                                <div uk-margin>
+                                    <input class="uk-input uk-width-expand" type="text" name="text" placeholder="상호명">
+        
+                                    <input class="uk-input uk-width-expand" type="text" name="text" placeholder="추가 설명(선택)">
+                                </div> -->
+                            <div>
+                                <div class="uk-margin uk-width-medium@s">
+                                    <h5>매장 이름</h5>
+                                    <input class="uk-input" type="text" name = "name" placeholder="명칭">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="uk-margin uk-width-medium@s">
+                                    <h5>매장  코드</h5>
+                                    <input class="uk-input" type="text" name = "code" placeholder="발급받은 매장 코드를 입력해주세요">
+                                </div>
+                            </div>
+                            <div class="uk-width-xlarge@s">
+                                <div class="uk-margin">
+                                    <h5>매장 설명</h5>
+                                    <textarea class="uk-textarea" type="text" rows="3" name = "description" placeholder="매장의 위치, 특징에 대한 간단한 설명을 입력해주세요"></textarea>
+                                </div>
+                            </div>
+                            <div class="uk-width-xlarge@s">
+                                <div uk-margin class="uk-margin uk-width-xlarge@s">
+                                    <h5>매장 주소</h5>
+                                    <input class="uk-input uk-width-1-2" type="text" id="postcode" name = "zip_code" placeholder="우편번호" readonly>
+                                    <input class="uk-button uk-button-primary uk-width-auto" type="button" onclick="execDaumPostcode()" value="우편번호 검색"><br>
+                                    
+                                    <div id="wrap" style="display:none;border:1px solid;width:100%;height:300px;margin:5px 0;position:relative">
+                                        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+                                    </div>
+                                    <input class="uk-input uk-width-expand" type="text" id="address"  placeholder="주소" readonly><br>
+                                    <input class="uk-input uk-width-expand" type="text" id="detailAddress" name = "detail_address" placeholder="상세주소">
+                                    <input class="uk-input uk-width-expand" type="text" id="extraAddress" placeholder="참고항목">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <button class="uk-button uk-button-primary" type="submit">등록</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="req_modal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <div id="content" class="uk-margin-large uk-width-xlarge@s">
+            <div>
+                <div>
+                    <h2>신규 매장 등록 요청</h2>
+                </div>
+                <table class="uk-table uk-table-hover uk-table-divider uk-table-responsive">
+                    <thead>
+                        <tr>
+                            <th>점주 이메일</th>
+                            <th>요청 시각</th>
+                            <th>거절</th>
+                            <th>수락</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-data">
+                        
+                        <% for (var i =0; i< rstore.length;i++) { %>
+                        <form action="/api/buser/store/deny/<%= rstore[i].id %>" method="POST">
+                        <tr>
+                            <td><%= rstore[i].email %></td>
+                            <td><%= rstore[i].time %></td>
+                            
+                            <td>
+                                
+                                <button class="uk-button uk-button-default" type="submit">X</button>
+                                
+                            </td>
+                        </form>
+                            <td>
+                                <form action="/api/buser/store/accept/hi" method="POST">
+                                    <button class="uk-button uk-button-primary" type="submit">O</button>
+                                </form>
+                            </td>
+                            <% } %>
+                        </tr>
+                    </tbody>
+                </table>
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/addressAPI.js"></script>
+
+<%- include ('../index/footer') %>

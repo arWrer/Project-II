@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/web.css">
+    <!-- <link rel="stylesheet" media="(max-width: 640px)" href="mobile.css"> -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit-icons.min.js"></script>
+    <script type="module" src="/js/index.js" data-link></script>
+    <style>
+        #window {
+            border-radius: 20px;
+            padding: 40px;
+        }
+        
+        form input {
+            margin: 33px;
+        }
+        
+        @media all and (max-width: 640px) {
+            #bg {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg" class="uk-background-primary" uk-height-viewport="expand: true">
+        <div id="window" class="uk-position-center uk-background-default">
+            <div class="uk-width-medium">
+                <div class="uk-margin">
+                    <h3>MUFI 관리자 페이지</h3>
+                </div>
+                <form action="?" method="POST">
+                    <h5>사용자 정보 입력</h5>
+                    <div uk-margin>
+                        <input class="uk-input uk-width-expand" type="text" name="username" placeholder="이름">
+                        <input class="uk-input uk-width-expand" type="text" name="email" placeholder="이메일">
+
+                        <input class="uk-input uk-width-expand" type="password" name="password1" placeholder="비밀번호">
+                        <input class="uk-input uk-width-expand" type="password" name="password2" placeholder="비밀번호 확인">
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary uk-height-1-1 uk-width-expand" type="submit">buser 회원가입</button>
+                    </div>
+                    <%= error %>
+                        <div class="uk-margin-small">
+                            <button type="button" class="uk-button uk-button-text" onclick="location.href = '/auth/buser/signin'">돌아가기</button>
+                        </div>
+
+                </form>
+                <!-- <div class="sns-signin">
+                    <button class="uk-button uk-button-primary">sign in with google</button>
+                    <button class="uk-button uk-button-primary">sign in with kakao</button>
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/addressAPI.js"></script>
+
+
+</html>

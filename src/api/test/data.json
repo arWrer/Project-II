@@ -1,0 +1,29 @@
+{
+    "testUser": {
+        "username": "test_username",
+        "email": "test_email@gmail.com",
+        "password": "test_password"
+    },
+    "testStore": {
+        "id": "test_id",
+        "code": "test_code",
+        "name": "test_name",
+        "description": "test_description",
+        "zip_code": "test",
+        "detail_address": "test_detail_address"
+    },
+    "updateStore": {
+        "id": "test_updated_id",
+        "code": "test_updated_code",
+        "name": "test_updated_name",
+        "description": "test_updated_description",
+        "zip_code": "test",
+        "detail_address": "test_updated_detail_address"
+    },
+    "testMenu": {
+        "label": "test_label",
+        "price": 20000,
+        "description": "test_description",
+        "image": "./views/resources/1.png"
+    }
+}

@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "description": "mufi RESTful API Server",
   "main": "dist/server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/seungho-hub/Mufi.git"
-  },
-  "author": "seungho-hub",
-  "license": "MIT",
-  "private": false,
   "scripts": {
     "start": "cross-env MODE=production node dist/server.js",
     "dev": "cross-env MODE=development node dist/server.js",

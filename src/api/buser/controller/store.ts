@@ -16,37 +16,38 @@ export async function createStore(req: Request, res: Response) {
     //name, description, zip_code, detail_address
     const { code, name, description, zip_code, detail_address } = req.body
     
-    if ((code && name && description && zip_code && detail_address) == undefined) {
-        res.status(400).json({
-            code: 400,
-            message: "입력 되지 않은 필드가 있습니다."
-        })
+    // if ((code && name && description && zip_code && detail_address) == undefined) {
+    //     res.status(400).json({
+    //         code: 400,
+    //         message: "입력 되지 않은 필드가 있습니다."
+    //     })
 
-        return
-    }
+    //     return
+    // }
 
     const buser_id = req.session.buser.id
     
     const registered_store = await Store.findOne({ where: { code } })
+    
 
-    // 등록된 code가 아닌 경우
-    if (registered_store == null) {
-        res.status(400).json({
-            code: 400,
-            message: "등록된 매장이 아닙니다, Mufi에 문의해주세요."
-        })
+    // // 등록된 code가 아닌 경우
+    // if (registered_store == null) {
+    //     res.status(400).json({
+    //         code: 400,
+    //         message: "등록된 매장이 아닙니다, Mufi에 문의해주세요."
+    //     })
 
-        return
-    }
+    //     return
+    // }
 
-    if (registered_store.getDataValue("registered")) {
-        res.status(400).json({
-            code: 400,
-            message: "이미 등록된 매장입니다.",
-        })
+    // if (registered_store.getDataValue("registered")) {
+    //     res.status(400).json({
+    //         code: 400,
+    //         message: "이미 등록된 매장입니다.",
+    //     })
 
-        return
-    }
+    //     return
+    // }
 
     Store.update({
         name,
@@ -59,33 +60,33 @@ export async function createStore(req: Request, res: Response) {
         {
             where: { code },
         })
-        .then(() => {
-            res.status(200).json({
-                code: 200,
-                message: "성공적으로 매장이 등록되었습니다.",
+        // .then(() => {
+        //     res.status(200).json({
+        //         code: 200,
+        //         message: "성공적으로 매장이 등록되었습니다.",
                 
-            })
+        //     })
 
-            return
-        })
+        //     return
+        // })
         
-        .catch(err => {
-            if (err instanceof ValidationError) {
-                res.status(400).json({
-                    code: 400,
-                    message: "입력 값이 유효하지 않습니다."
-                })
+        // .catch(err => {
+        //     if (err instanceof ValidationError) {
+        //         res.status(400).json({
+        //             code: 400,
+        //             message: "입력 값이 유효하지 않습니다."
+        //         })
 
-                return
-            }
+        //         return
+        //     }
 
-            res.status(500).json({
-                code: 500,
-                message: "알 수 없는 에러가 발생했습니다."
-            })
+        //     res.status(500).json({
+        //         code: 500,
+        //         message: "알 수 없는 에러가 발생했습니다."
+        //     })
 
-            return
-        })
+        //     return
+        // })
    
 }
 export async function updateStore(req: Request, res: Response) {
@@ -209,10 +210,6 @@ export async function registerStore(req: Request, res: Response) {
         
     
         
-    })
-    .then((menu) => {
-        requestStore.destroy({where:{id : id}})
-        return
     })
     
 }

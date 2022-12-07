@@ -16,7 +16,7 @@ export async function renderHome(req: Request, res: Response) {
     const buser_id = req.session.buser.id
     const page = req.params.p;
     
-    const getlast = "select s.name,date_format(o.requestedAt,'%Y-%m-%d %H:%i:%s') as time,o.method,o.totalAmount from stores as s ,orders as o where s.id = o.store_id and date_format(o.requestedAt,'%Y-%m-%d') <= now() order by time desc limit 30;"
+    const getlast = "select s.name,date_format(o.requestedAt,'%Y-%m-%d %H:%i:%s') as time,o.method,o.totalAmount from stores as s ,orders as o where s.id = o.store_id and date_format(o.requestedAt,'%Y-%m-%d') <= now() order by time desc limit 50;"
     
     const ddgraph ="select sum(o.totalAmount) as sum,s.name from orders as o,stores as s where o.store_id=s.id and date_format(o.requestedAt,'%Y-%m-%d') = date_format(curdate(),'%Y-%m-%d') group by s.name;"
     const mmgraph="select sum(o.totalAmount) as sum,s.name from orders as o,stores as s where o.store_id=s.id and month(o.requestedAt) = month(now()) group by s.name;"
